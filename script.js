@@ -13,6 +13,9 @@ console.log(hiddenNumber);
 
 //Initialize the score
 let score = 20;
+// let highscores = [];
+let maxScore = 0;
+document.querySelector('.highscore').textContent = maxScore;
 
 document.querySelector('.check').addEventListener('click', function () {
   let guess = Number(document.querySelector('.guess').value);
@@ -28,6 +31,17 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').textContent = hiddenNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+
+    if (score > maxScore) {
+      maxScore = score;
+      document.querySelector('.highscore').textContent = maxScore;
+    }
+
+    /////////////////////////////////////
+    //INSERT SCORES INTO HIGHSCORES ARRAY
+    // highscores.push(score);
+    // document.querySelector('.highscore').textContent = maxScore;
+    /////////////////////////////////////
   }
   //Wrong guess
   else if (guess < hiddenNumber) {
@@ -63,4 +77,13 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
   console.log(hiddenNumber);
+
+  // for (let i = 0; i < highscores.length; i++) {
+  //   if (highscores[i] > maxScore) {
+  //     maxScore = highscores[i];
+  //   }
+  // }
+
+  // document.querySelector('.highscore').textContent = maxScore;
+  // console.log(maxScore);
 });
