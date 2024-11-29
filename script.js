@@ -8,7 +8,7 @@
 // console.log(document.querySelector('.guess'));
 // document.querySelector('input .guess').textContent = 4;
 
-const hiddenNumber = Math.round(Math.random() * 20);
+let hiddenNumber = Math.round(Math.random() * 20);
 console.log(hiddenNumber);
 
 //Initialize the score
@@ -26,8 +26,8 @@ document.querySelector('.check').addEventListener('click', function () {
   else if (guess === hiddenNumber) {
     document.querySelector('.message').textContent = 'Correct number!';
     document.querySelector('.number').textContent = hiddenNumber;
-
     document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
   }
   //Wrong guess
   else if (guess < hiddenNumber) {
@@ -49,6 +49,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
 
-  // document.querySelector('.score').textContent = score;
+//IMPLEMENT A GAME RESET FUNCTIONALITY
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  hiddenNumber = Math.round(Math.random() * 20);
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+  console.log(hiddenNumber);
 });
